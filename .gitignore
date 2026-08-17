@@ -1,0 +1,13 @@
+# Salidas Delta generadas por los notebooks (se regeneran corriendo el código)
+data/silver/**/*.parquet*
+data/silver/**/_delta_log
+
+spark-warehouse/
+
+# Checkpoints y caches de Jupyter/Python
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Metadata de VS Code que no aporta al ejercicio
+.vscode/

@@ -1,0 +1,22 @@
+{
+  // Le dice a VS Code que use nuestro docker-compose.yml en vez de crear uno propio
+  "name": "prueba-tecnica-apex-spark",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "spark",
+  "workspaceFolder": "/workspace",
+
+  // Extensiones que VS Code instala AUTOMÁTICAMENTE dentro del contenedor.
+  // Sin esto, VS Code seguiría ofreciendo el Python 3.13 de Windows como kernel,
+  // que no tiene PySpark ni Java 17.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ]
+    }
+  },
+
+  // Evita que el contenedor se apague al cerrar VS Code (docker compose ya lo mantiene vivo)
+  "shutdownAction": "none"
+}

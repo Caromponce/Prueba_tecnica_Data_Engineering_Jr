@@ -1,0 +1,22 @@
+services:
+  spark:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      # Monta el proyecto completo dentro del contenedor, en /workspace
+      - .:/workspace
+      # Persiste la caché de Ivy/Maven entre corridas: sin esto, Spark re-descarga
+      # los JARs de Delta Lake (~40 MB) cada vez que se crea una SparkSession nueva.
+      - spark-ivy-cache:/root/.ivy2
+    working_dir: /workspace
+    environment:
+      # Permite hacer `from src.common.spark_session import get_spark` desde cualquier notebook
+      - PYTHONPATH=/workspace
+    ports:
+      # Spark UI: útil para ver cómo se ejecutan los jobs (etapas, shuffles, etc.)
+      - "4040:4040"
+    tty: true
+
+volumes:
+  spark-ivy-cache:

@@ -1,0 +1,6 @@
+# Versiones fijadas a propósito: delta-spark y pyspark están acoplados por versión
+# (delta-spark 3.2.x requiere pyspark 3.5.x). Si se dejan sueltas, un "pip install"
+# futuro puede traer versiones incompatibles y romper todos los notebooks.
+pyspark==3.5.3
+delta-spark==3.2.0
+ipykernel==6.29.5
